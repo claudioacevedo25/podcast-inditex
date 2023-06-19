@@ -137,3 +137,90 @@ export enum Rel {
 export enum Type {
   TextHTML = "text/html",
 }
+
+export interface DetailPodcastResponse {
+  contents: { resultCount: number; results: Result[] }
+}
+
+export interface Result {
+  artistId?: number
+  artistIds?: number[]
+  artistName?: string
+  artistViewUrl: string
+  artworkUrl100?: string
+  artworkUrl160?: string
+  artworkUrl30?: string
+  artworkUrl60: string
+  artworkUrl600: string
+  closedCaptioning?: ClosedCaptioning
+  collectionCensoredName?: Name
+  collectionExplicitness?: string
+  collectionHdPrice?: number
+  collectionId: number
+  collectionName: Name
+  collectionPrice?: number
+  collectionViewUrl: string
+  country: Country
+  currency?: string
+  description?: string
+  episodeContentType?: EpisodeContentType
+  episodeFileExtension?: EpisodeFileExtension
+  episodeGuid?: string
+  episodeUrl?: string
+  feedUrl: string
+  genreIds?: string[]
+  genres: Array<GenreClass | string>
+  kind: Kind
+  previewUrl?: string
+  primaryGenreName?: PrimaryGenreNameEnum
+  releaseDate: Date
+  shortDescription?: string
+  trackCensoredName?: Name
+  trackCount?: number
+  trackExplicitness?: string
+  trackId: number
+  trackName: string
+  trackPrice?: number
+  trackTimeMillis: number
+  trackViewUrl: string
+  wrapperType: WrapperType
+}
+
+export enum ClosedCaptioning {
+  None = "none",
+}
+
+export enum Name {
+  SwitchedOnPop = "Switched on Pop",
+}
+
+export enum Country {
+  Usa = "USA",
+}
+
+export enum EpisodeContentType {
+  Audio = "audio",
+}
+
+export enum EpisodeFileExtension {
+  Mp3 = "mp3",
+}
+
+export interface GenreClass {
+  id: string
+  name: PrimaryGenreNameEnum
+}
+
+export enum PrimaryGenreNameEnum {
+  MusicCommentary = "Music Commentary",
+}
+
+export enum Kind {
+  Podcast = "podcast",
+  PodcastEpisode = "podcast-episode",
+}
+
+export enum WrapperType {
+  PodcastEpisode = "podcastEpisode",
+  Track = "track",
+}

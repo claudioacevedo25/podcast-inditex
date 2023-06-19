@@ -3,11 +3,10 @@ import { CardImage } from "@/components/atoms/CardImage"
 import { HomeProps } from "./home.model"
 import styles from "./home.module.css"
 
-export const HomeComponent = ({ isLoading, podcasts }: HomeProps) => {
+export const HomeComponent = ({ podcasts }: HomeProps) => {
   return (
     <div className={styles.container}>
-      {isLoading && <CircularProgress sx={{ margin: "0 auto" }} size={80} />}
-      {podcasts.feed.entry.length && !isLoading && (
+      {podcasts.feed.entry.length && (
         <section className={styles.cards} id="home-cards">
           {podcasts.feed.entry.map((podcast) => (
             <CardImage
