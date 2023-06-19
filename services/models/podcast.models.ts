@@ -1,7 +1,8 @@
 export interface PodcastResponse {
-  feed: Feed
+  contents: {
+    feed: Feed
+  }
 }
-
 export interface Feed {
   author: Author
   entry: Entry[]

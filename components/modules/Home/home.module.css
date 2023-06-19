@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 1rem 0 2rem;
+  color: #3c50b5;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
