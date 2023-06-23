@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 
 const DetailPodcastPage = () => {
   const router = useRouter()
-  const idPodcast = router.query["id"]
+  const idPodcast = router.query["id-podcast"]
   if (!idPodcast) return null
   return <Detail id={String(idPodcast)} />
 }
