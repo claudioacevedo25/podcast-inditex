@@ -3,8 +3,10 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace"
 import { Typography } from "@mui/material"
 import { CardImageAuthor } from "@/components/atoms/CardImageAuthor"
 import { ComponentProps } from "./detail.model"
-import styles from "./detail.module.css"
 import { useRouter } from "next/router"
+import { Result } from "@/services/models/podcast.models"
+import { useAppContext } from "@/context/appContext"
+import styles from "./detail.module.css"
 
 const columns: GridColDef[] = [
   { field: "trackName", headerName: "Name", width: 600 },
@@ -38,12 +40,19 @@ const columns: GridColDef[] = [
 
 export const DetailComponent = ({ podcast }: ComponentProps) => {
   const router = useRouter()
+  const { updateEpisode } = useAppContext()
 
   const artist = podcast.results[0]
   const episodes = podcast.results.filter(({ artistIds }) => artistIds)
 
   const generateRowId = (row: any) =>
     `${row.artistId}-${row.collectionId}-${row.trackId}`
+
+  const redirectToEpisode = (item: any) => {
+    const row = item.row as Result
+    updateEpisode(row, artist)
+    router.push(`/podcast/${row.collectionId}/episode/${row.trackId}`)
+  }
   return (
     <>
       <KeyboardBackspaceIcon
@@ -72,6 +81,18 @@ export const DetailComponent = ({ podcast }: ComponentProps) => {
               rows={episodes}
               columns={columns}
               getRowId={generateRowId}
+              onRowClick={(item) => redirectToEpisode(item)}
+              hideFooter
+              sx={{
+                ".MuiDataGrid-cell:focus": {
+                  outline: "none",
+                },
+                "& .MuiDataGrid-row:hover": {
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                  color: "blue",
+                },
+              }}
             />
           </div>
         </div>

@@ -1,0 +1,44 @@
+.back__arrow {
+  padding: 1rem 0;
+  color: blue;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  gap: 6rem;
+}
+
+.author,
+.table__container {
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.author {
+  height: min-content;
+}
+
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.episode,
+.episode__description {
+  padding: 1rem;
+}
+
+.episode__description {
+  letter-spacing: 0.1rem;
+  padding-top: 0;
+  line-height: 1.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}

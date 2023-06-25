@@ -12,6 +12,10 @@
   padding: 1.5rem;
 }
 
+.image__redirect {
+  cursor: pointer;
+}
+
 .profile {
   border-radius: 10%;
 }

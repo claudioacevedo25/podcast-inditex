@@ -5,6 +5,7 @@ type Props = {
   author: string
   collectionName: string
   description: string
+  id?: number
 }
 
 export const CardImageAuthorContainer = (props: Props) => (

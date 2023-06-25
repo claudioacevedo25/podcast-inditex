@@ -6,7 +6,9 @@ type Props = {
   children: React.ReactNode
 }
 const defaultValues: ContextProps = {
-  podcast: null,
+  episode: null,
+  artist: null,
+  updateEpisode: () => {},
 }
 
 const AppContext = createContext(defaultValues)
@@ -14,8 +16,11 @@ const AppContext = createContext(defaultValues)
 export function ContextProvider({ children }: Props) {
   const [appState, setAppState] = useState<ContextProps>(defaultValues)
 
-  const updateEpisode = (episode: ContextProps["podcast"]) => {
-    setAppState((prevState) => ({ ...prevState, episode }))
+  const updateEpisode = (
+    episode: ContextProps["artist"],
+    artist: ContextProps["artist"]
+  ) => {
+    setAppState((prevState) => ({ ...prevState, episode, artist }))
   }
 
   const contextValue = useMemo(

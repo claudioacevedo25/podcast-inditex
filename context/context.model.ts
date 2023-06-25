@@ -1,5 +1,7 @@
 import { Result } from "@/services/models/podcast.models"
 
 export type ContextProps = {
-  podcast: Result | null
+  episode: Result | null
+  artist: Result | null
+  updateEpisode: (episode: Result, artist: Result) => void
 }
