@@ -1,11 +1,10 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid"
 
 export const columns: GridColDef[] = [
-  { field: "trackName", headerName: "Name", width: 600 },
+  { field: "trackName", headerName: "Name", flex: 1 },
   {
     field: "releaseDate",
     headerName: "Date",
-    width: 230,
     valueGetter: (params: GridValueGetterParams) => {
       const releaseDate = params.row.releaseDate
       if (!releaseDate) return "N/A"
@@ -18,7 +17,6 @@ export const columns: GridColDef[] = [
     field: "trackTimeMillis",
     headerName: "duration",
     type: "number",
-    width: 100,
     valueGetter: (params: GridValueGetterParams) => {
       const trackTimeMillis = params.row.trackTimeMillis
       if (!trackTimeMillis) return "N/A"

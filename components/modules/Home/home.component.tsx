@@ -11,7 +11,6 @@ export const HomeComponent = ({ podcasts, handleSearch }: HomeProps) => {
     <div className={styles.container}>
       <div className={styles.search__input}>
         <TextField
-          label="Search"
           variant="outlined"
           onChange={handleSearch}
           placeholder={placeholderSearch}

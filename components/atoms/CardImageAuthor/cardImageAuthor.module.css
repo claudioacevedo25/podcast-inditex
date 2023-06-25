@@ -25,3 +25,10 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+@media (max-width: 800px) {
+  .image__container {
+    display: flex;
+    justify-content: center;
+  }
+}
