@@ -1,12 +1,32 @@
-import { CircularProgress } from "@mui/material"
+import { Alert, TextField } from "@mui/material"
 import { CardImage } from "@/components/atoms/CardImage"
 import { HomeProps } from "./home.model"
 import styles from "./home.module.css"
 
-export const HomeComponent = ({ podcasts }: HomeProps) => {
+const placeholderSearch = "Filter Podcast"
+const emptyPodcast = "There are not results"
+export const HomeComponent = ({ podcasts, handleSearch }: HomeProps) => {
+  const areResults = Boolean(podcasts.feed.entry.length)
   return (
     <div className={styles.container}>
-      {podcasts.feed.entry.length && (
+      <div className={styles.search__input}>
+        <TextField
+          label="Search"
+          variant="outlined"
+          onChange={handleSearch}
+          placeholder={placeholderSearch}
+        />
+      </div>
+      {!areResults && (
+        <Alert
+          severity="warning"
+          variant="outlined"
+          className={styles.alert__messages}
+        >
+          {emptyPodcast}
+        </Alert>
+      )}
+      {areResults && (
         <section className={styles.cards} id="home-cards">
           {podcasts.feed.entry.map((podcast) => (
             <CardImage
