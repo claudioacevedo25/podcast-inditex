@@ -2,14 +2,7 @@ import Image from "next/image"
 import styles from "@/components/atoms/CardImageAuthor/cardImageAuthor.module.css"
 import { Divider, Typography } from "@mui/material"
 import { useRouter } from "next/router"
-
-type Props = {
-  image: string
-  author: string
-  collectionName: string
-  description: string
-  id?: number
-}
+import { Props } from "./cardImageAuthor.model"
 
 export const CardImageAuthorComponent = ({
   author,

@@ -2,13 +2,13 @@ import { ChangeEvent, useEffect, useState } from "react"
 import { PodcastResponse } from "@/services/models/podcast.models"
 import { podcastService } from "@/services/modules/podcast.service"
 import { HomeComponent } from "./home.component"
-import { CircularProgress } from "@mui/material"
 import { getPodcastFilter } from "./helpers/home.helpers"
+import { useAppContext } from "@/context/appContext"
 
 const { getPodcasts } = podcastService
 
 export const HomeContainer = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const { updateIsLoading } = useAppContext()
   const [podcasts, setPodcasts] = useState<PodcastResponse["contents"]>()
   const [filterPodcasts, setFilterPodcasts] =
     useState<PodcastResponse["contents"]>()
@@ -27,17 +27,13 @@ export const HomeContainer = () => {
     } catch (error) {
       console.error(error)
     }
-    setIsLoading(false)
+    updateIsLoading(false)
   }
 
   useEffect(() => {
     void fetchPokemons()
   }, [])
 
-  if (isLoading)
-    return (
-      <CircularProgress size={80} sx={{ margin: "auto", display: "flex" }} />
-    )
   if (!podcasts) return null
   return (
     <HomeComponent

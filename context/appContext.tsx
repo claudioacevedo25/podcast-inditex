@@ -8,7 +8,9 @@ type Props = {
 const defaultValues: ContextProps = {
   episode: null,
   artist: null,
+  isLoading: true,
   updateEpisode: () => {},
+  updateIsLoading: () => {},
 }
 
 const AppContext = createContext(defaultValues)
@@ -22,9 +24,12 @@ export function ContextProvider({ children }: Props) {
   ) => {
     setAppState((prevState) => ({ ...prevState, episode, artist }))
   }
+  const updateIsLoading = (isLoading: boolean) => {
+    setAppState((prevState) => ({ ...prevState, isLoading }))
+  }
 
   const contextValue = useMemo(
-    () => ({ ...appState, updateEpisode }),
+    () => ({ ...appState, updateEpisode, updateIsLoading }),
     [appState]
   )
   return (
