@@ -1,4 +1,4 @@
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid"
+import { DataGrid } from "@mui/x-data-grid"
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace"
 import { Typography } from "@mui/material"
 import { CardImageAuthor } from "@/components/atoms/CardImageAuthor"
@@ -7,36 +7,7 @@ import { useRouter } from "next/router"
 import { Result } from "@/services/models/podcast.models"
 import { useAppContext } from "@/context/appContext"
 import styles from "./detail.module.css"
-
-const columns: GridColDef[] = [
-  { field: "trackName", headerName: "Name", width: 600 },
-  {
-    field: "releaseDate",
-    headerName: "Date",
-    width: 230,
-    valueGetter: (params: GridValueGetterParams) => {
-      const releaseDate = params.row.releaseDate
-      if (!releaseDate) return "N/A"
-      const fullDate = new Date(releaseDate)
-      const date = fullDate.toISOString().split("T")[0]
-      return date
-    },
-  },
-  {
-    field: "trackTimeMillis",
-    headerName: "duration",
-    type: "number",
-    width: 100,
-    valueGetter: (params: GridValueGetterParams) => {
-      const trackTimeMillis = params.row.trackTimeMillis
-      if (!trackTimeMillis) return "N/A"
-      const seconds = Math.floor(trackTimeMillis / 1000)
-      const hours = Math.floor(seconds / 3600)
-      const minutes = Math.floor((seconds % 3600) / 60)
-      return `${hours}hrs ${minutes} min`
-    },
-  },
-]
+import { columns } from "./helpers/detail.helpers"
 
 export const DetailComponent = ({ podcast }: ComponentProps) => {
   const router = useRouter()

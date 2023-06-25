@@ -24,6 +24,6 @@
     "**/*.tsx",
     "services/models/.gitKeep",
     "services/modules/.gitkeep"
-  ],
+, "jest.config.mjs"  ],
   "exclude": ["node_modules"]
 }
